@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.urls import path
 from .views import RapidApiRecipeSearch
+from .views import RapidApiRecipeDetail
 
 urlpatterns = [
     path('rapidapi/recipes/', RapidApiRecipeSearch.as_view(), name='rapidapi-recipe-search'),
+    path('rapidapi/recipes/', RapidApiRecipeDetail.as_view(), name='rapidapi-recipe-information'),
+
+    
 ]

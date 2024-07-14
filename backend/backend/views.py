@@ -15,3 +15,16 @@ class RapidApiRecipeSearch(APIView):
         response = requests.get(url, headers=headers, params=querystring)
         data = response.json()
         return Response(data)
+
+class RapidApiRecipeDetail(APIView):
+    def get(self, request, recipe_id):
+        url = f"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{recipe_id}/information"
+        headers = {
+            "X-RapidAPI-Key": settings.RAPIDAPI_KEY,
+            "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+        }
+
+        response = requests.get(url, headers=headers)
+
+        data = response.json()
+        return Response(data)
