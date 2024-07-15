@@ -1,41 +1,33 @@
-// src/App.js
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from "./components/Header";
+import NavBar from "./components/NavBar";
+import RecipeSearch from "./components/RecipeSearch";
+import About from "./components/About";
+import Footer from "./components/Footer";
+import RecipeDetails from "./components/RecipeDetails";
 
 function App() {
-  const [recipes, setRecipes] = useState([]);
-  const [recipe, setRecipe] = useState('');
-
-  useEffect(() => {
-    axios.get('http://localhost:8000/api/recipes/')
-        .then(response => setRecipes(response.data))
-        .catch(error => console.error('There was an error fetching the recipes!', error));
-  }, []);
-
-  const addrecipe = () => {
-    axios.post('http://localhost:8000/api/recipe/', { name: recipe })
-        .then(response => setRecipes([...recipes, response.data]))
-        .catch(error => console.error('There was an error adding the recipe!', error));
-    setRecipe('');
-  };
-
-  return (
-      <div className="App">
-        <h1>Recipe List</h1>
-        <input
-            type="text"
-            value={recipe}
-            onChange={e => setRecipe(e.target.value)}
-            placeholder="Add a new Recipe"
-        />
-        <button onClick={addrecipe}>Add recipe</button>
-        <ul>
-          {recipes.map(recipe => (
-              <li key={recipe.id}>{recipe.name}</li>
-          ))}
-        </ul>
-      </div>
-  );
+    return (
+        <div className="flex flex-col">
+            <Router>
+                <nav className="mx-4 bg-white items-center p-4">
+                    <div className="flex flex-row items-center space-x-8">
+                        <Header />
+                        <NavBar />
+                    </div>
+                </nav>
+                <main className="flex-1 container mx-auto p-4">
+                    <Routes>
+                        <Route path="/about" element={<About />} />
+                        <Route path="/" element={<RecipeSearch />} />
+                        <Route path="/recipe/:id" element={<RecipeDetails/>} />
+                    </Routes>
+                </main>
+            </Router>
+            <Footer />
+        </div>
+    );
 }
 
 export default App;
