@@ -9,7 +9,7 @@ import RecipeDetails from "./components/RecipeDetails";
 
 function App() {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col min-h-screen">
             <Router>
                 <nav className="mx-4 bg-white items-center p-4">
                     <div className="flex flex-row items-center space-x-8">
@@ -17,15 +17,15 @@ function App() {
                         <NavBar />
                     </div>
                 </nav>
-                <main className="flex-1 container mx-auto p-4">
+                <main className="flex-grow container mx-auto p-4">
                     <Routes>
                         <Route path="/about" element={<About />} />
                         <Route path="/" element={<RecipeSearch />} />
-                        <Route path="/recipe/:id" element={<RecipeDetails/>} />
+                        <Route path="/recipe/:id" element={<RecipeDetails />} />
                     </Routes>
                 </main>
+                <Footer />
             </Router>
-            <Footer />
         </div>
     );
 }
