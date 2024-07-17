@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    'backend'
 ]
 
 MIDDLEWARE = [
@@ -77,12 +78,29 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+# settings.py
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'Recipe-Finder',  # Replace with your database name
+#         'ENFORCE_SCHEMA': False,
+#         'CLIENT': {
+#             'host': 'cluster0.4vyp6io.mongodb.net',  # MongoDB host
+#             'port': 27017,        # MongoDB port
+#             'username': 'RecipeFinder',  # MongoDB username (if needed)
+#             'password': '6oeMKX71DPuuLPMh',  # MongoDB password (if needed)
+#             'authSource': 'admin',   # MongoDB auth source
+#             'authMechanism': 'SCRAM-SHA-1',  # MongoDB authentication mechanism
+#         }
+#     }
+# }
 
 
 # Password validation

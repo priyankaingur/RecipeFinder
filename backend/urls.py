@@ -15,12 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from .views import RapidApiRecipeSearch
-from .views import RapidApiRecipeDetail
+from .views import RapidApiRecipeSearch, RapidApiRecipeDetail, RapidApiRecipeNutrients,CreateRecipeView,GetMostViewedRecipesView
+
 
 urlpatterns = [
-    path('rapidapi/recipes/', RapidApiRecipeSearch.as_view(), name='rapidapi-recipe-search'),
-    path('rapidapi/recipes/', RapidApiRecipeDetail.as_view(), name='rapidapi-recipe-information'),
-
-    
+    path('api/recipes/', RapidApiRecipeSearch.as_view(), name='rapidapi-recipe-search'),
+    path('api/recipes/', RapidApiRecipeDetail.as_view(), name='rapidapi-recipe-information'),
+    path('api/recipes/', RapidApiRecipeNutrients.as_view(), name='rapidapi-recipe-nutrients'),
+  path('api/recipes/', CreateRecipeView.as_view(), name='create_viewed_recipe'),
+    path('api/recipes/', GetMostViewedRecipesView.as_view(), name='get_most_viewed_recipes'),
 ]
