@@ -132,8 +132,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://recipe-finder-2024.s3-website.us-east-2.amazonaws.com/"
+    "http://recipe-finder-2024.s3-website.us-east-2.amazonaws.com",
 ]
+
 
 ALLOWED_HOSTS = ['18.116.68.212', 'ec2-18-116-68-212.us-east-2.compute.amazonaws.com']
 
