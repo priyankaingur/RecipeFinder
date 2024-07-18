@@ -52,7 +52,10 @@ class RapidApiRecipeSearch(APIView):
         url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients"
         headers = {
             "X-RapidAPI-Key": settings.RAPIDAPI_KEY,
-            "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+            "X-RapidAPI-Host":
+                "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+            "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
         }
         querystring = {"ingredients": ingredients}
         
@@ -71,7 +74,10 @@ class RapidApiRecipeDetail(APIView):
         url = f"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{recipe_id}/information"
         headers = {
             "X-RapidAPI-Key": settings.RAPIDAPI_KEY,
-            "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+            "X-RapidAPI-Host":
+                "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+            "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
         }
 
         try:
