@@ -1,22 +1,5 @@
-from rest_framework import status
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from django.conf import settings
 import requests
-from .mongo_utils import insert_one, find_one
-
-import certifi 
-import ssl
-import pymongo
-from pymongo import MongoClient
-
-
-
-from rest_framework.response import Response
-from rest_framework import status
-from rest_framework.views import APIView
-from .mongo_utils import insert_one, find_one, update_one
-
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
@@ -96,7 +79,9 @@ class RapidApiRecipeDetail(APIView):
             response.raise_for_status()  # Raise HTTPError for non-2xx responses
             data = response.json()
             return Response(data, status=response.status_code)
-        except requests.exceptions.RequestException as e:
+        # except requests.exceptions.RequestException as e:
+        except Exception as e:
+            print(e)
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
