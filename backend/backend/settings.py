@@ -136,7 +136,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 
-ALLOWED_HOSTS = ['18.116.68.212', 'ec2-18-116-68-212.us-east-2.compute.amazonaws.com']
+ALLOWED_HOSTS = ['18.116.68.212', 'ec2-18-116-68-212.us-east-2.compute.amazonaws.com','127.0.0.1']
 
 
 RAPIDAPI_KEY = config('RAPIDAPI_KEY')
