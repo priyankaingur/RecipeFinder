@@ -22,7 +22,8 @@ demonstrates the development and deployment of a Recipe Finder website. The purp
 - **Deployment**: AWS S3, EC2, CloudFront
 
 ### Architecture Diagram
-![Architechture2.png](Assets%2FArchitechture2.png)
+![img.png](Assets%2Fimg.png)
+
 ## Frontend Development
 
 **Features**
