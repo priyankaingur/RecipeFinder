@@ -1,5 +1,6 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:8000/api/recipes'
+const baseUrl = 'http://18.116.68.212/api/recipes'
+// const baseUrl = 'http://localhost:8000/api/recipes'
 
 const getByIngredients = (ingredients) => {
     const request = axios.get(`${baseUrl}/?ingredients=${ingredients}`)
@@ -16,13 +17,19 @@ const getRecipeById = (id) => {
 }
 
 const getNutritionById = (id) => {
-    const request = axios.get(`${baseUrl}/${id}/`)
+    const request = axios.get(`${baseUrl}/${id}/nutrients`)
+    return request.then(response => {
+        return response.data
+    })
+}
+
+const getSimilarById = (id) => {
+    const request = axios.get(`${baseUrl}/${id}/similar`)
     return request.then(response => {
         return response.data
     })
 }
 const logView = (data) => {
-
     const request = axios.post(`${baseUrl}/log-view/`, data)
     return request.then(response => {
         return response.data
@@ -36,4 +43,4 @@ const getMostViewed = () => {
     })
 }
 
-export default { getByIngredients,getRecipeById, getNutritionById ,logView,getMostViewed}
+export default { getByIngredients,getRecipeById, getNutritionById ,getSimilarById,logView,getMostViewed}
