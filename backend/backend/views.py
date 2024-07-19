@@ -109,3 +109,20 @@ class RapidApiRecipeNutrients(APIView):
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+class RapidApiSimilarRecipe(APIView):
+    def get(self, request, recipe_id):
+        url = f"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{recipe_id}/similar"
+        headers = {
+            "X-RapidAPI-Key": settings.RAPIDAPI_KEY,
+            "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+        }
+
+        try:
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()  # Raise HTTPError for non-2xx responses
+            data = response.json()
+            return Response(data, status=response.status_code)
+        except requests.exceptions.RequestException as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
