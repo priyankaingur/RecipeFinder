@@ -14,10 +14,13 @@ function RecipeDetails() {
     const [isExpanded, setIsExpanded] = useState(false); // State variable for expanded view
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
+    useEffect(() => {
         Recipe.getRecipeById(id)
             .then(response => {
                 setRecipeDetails(response);
-                Recipe.logView({...response,id:id})
+                Recipe.logView({ ...response, id: id })
                     .then(() => console.log("Logged recipe view"))
                     .catch(error => console.error('There was an error fetching the recipes!', error));
             })
@@ -26,11 +29,12 @@ function RecipeDetails() {
         Recipe.getNutritionById(id)
             .then(response => setNutritionalInfo(response))
             .catch(error => console.error('There was an error fetching the nutritional information!', error));
+
         Recipe.getSimilarById(id)
             .then(response => setSimilarRecipes(response))
             .catch(error => console.error('There was an error fetching the nutritional information!', error));
 
-        }, [id]);
+    }, [id]); // Dependency array containing `id`
 
     if (!recipeDetails || !nutritionalInfo) {
         return <div className="spin-in">Loading...</div>;
